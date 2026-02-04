@@ -1,0 +1,592 @@
+/* Container */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  position: relative;
+}
+
+/* Ad Placeholders */
+.adBanner {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.adSticky {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+}
+
+.adPlaceholder {
+  max-width: 728px;
+  height: 90px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Game Wrapper */
+.gameWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem 2rem 120px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInDown 0.6s ease-out;
+  width: 100%;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.5px;
+}
+
+.description {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Main Content - Desktop Layout */
+.mainContent {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Game Board - Center */
+.gameBoard {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  flex-shrink: 0;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Sidebar - Right */
+.sidebar {
+  width: 100%;
+  max-width: 320px;
+  flex-shrink: 0;
+  animation: fadeInRight 0.8s ease-out;
+}
+
+.sidebarContent {
+  position: sticky;
+  top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Game Info in Sidebar */
+.gameInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.movesCounter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.label {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+.value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  min-width: 2ch;
+  text-align: center;
+}
+
+.restartButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #f16b26;
+  color: #ffffff;
+  border: none;
+  padding: 0.875rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+
+.restartButton:hover {
+  background: #ff7a33;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(241, 107, 38, 0.5);
+}
+
+.restartButton:active {
+  transform: translateY(0);
+}
+
+.restartButton svg {
+  animation: rotate 0.6s ease-in-out;
+}
+
+.restartButton:hover svg {
+  animation: rotate 0.6s ease-in-out infinite;
+}
+
+.puzzleGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  aspect-ratio: 1;
+}
+
+/* Tiles */
+.tile {
+  aspect-ratio: 1;
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  border: 1px solid #333333;
+  border-radius: 12px;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: #f16b26;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tile.empty {
+  background: transparent;
+  box-shadow: none;
+  cursor: default;
+}
+
+.tile.movable {
+  cursor: grab;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.tile.movable:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 6px 20px rgba(241, 107, 38, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 0 0 3px rgba(241, 107, 38, 0.5);
+}
+
+.tile.movable:active {
+  transform: scale(0.95);
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.tile.dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+  transform: scale(0.95);
+  box-shadow:
+    0 8px 25px rgba(241, 107, 38, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.tile.dragOver {
+  background: rgba(241, 107, 38, 0.2);
+  box-shadow:
+    0 0 0 3px rgba(241, 107, 38, 0.8),
+    0 4px 15px rgba(241, 107, 38, 0.4);
+  animation: dragOverPulse 0.6s ease-in-out infinite;
+}
+
+.tile.solved {
+  background: linear-gradient(145deg, #f16b26, #ff7a33);
+  color: #ffffff;
+  animation: celebrate 0.6s ease-out;
+}
+
+/* Win Overlay */
+.winOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s ease-out;
+  z-index: 10;
+}
+
+.winMessage {
+  text-align: center;
+  color: #ffffff;
+  padding: 2rem;
+  animation: bounceIn 0.6s ease-out;
+}
+
+.winMessage h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin: 0 0 0.5rem 0;
+  font-weight: 800;
+}
+
+.winMessage p {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  margin: 0 0 1.5rem 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.playAgainButton {
+  background: linear-gradient(135deg, #f16b26, #ff7a33);
+  color: #ffffff;
+  border: none;
+  padding: 0.875rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.playAgainButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(241, 107, 38, 0.6);
+}
+
+.playAgainButton:active {
+  transform: translateY(0);
+}
+
+/* Instructions */
+.instructions {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+}
+
+.instructions h3 {
+  margin: 0 0 1rem 0;
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.instructions ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.8;
+}
+
+.instructions li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.instructions li:last-child {
+  margin-bottom: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  70% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    box-shadow:
+      0 4px 10px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  50% {
+    box-shadow:
+      0 4px 10px rgba(241, 107, 38, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 0 0 2px rgba(241, 107, 38, 0.6);
+  }
+}
+
+@keyframes celebrate {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dragOverPulse {
+
+  0%,
+  100% {
+    background: rgba(241, 107, 38, 0.2);
+    box-shadow:
+      0 0 0 3px rgba(241, 107, 38, 0.8),
+      0 4px 15px rgba(241, 107, 38, 0.4);
+  }
+
+  50% {
+    background: rgba(241, 107, 38, 0.4);
+    box-shadow:
+      0 0 0 5px rgba(241, 107, 38, 1),
+      0 6px 20px rgba(241, 107, 38, 0.6);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .mainContent {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    max-width: 450px;
+    width: 100%;
+  }
+
+  .sidebarContent {
+    position: static;
+  }
+
+  .gameBoard {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .gameWrapper {
+    padding: 1.5rem 1rem 120px;
+  }
+
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .mainContent {
+    gap: 1.5rem;
+  }
+
+  .gameInfo {
+    gap: 0.75rem;
+  }
+
+  .movesCounter {
+    padding: 0.875rem 1.25rem;
+  }
+
+  .restartButton {
+    padding: 0.875rem 1.25rem;
+  }
+
+  .puzzleGrid {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .tile {
+    border-radius: 10px;
+  }
+
+  .instructions {
+    padding: 1.25rem;
+  }
+
+  .adPlaceholder {
+    height: 50px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .puzzleGrid {
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .tile {
+    border-radius: 8px;
+  }
+
+  .movesCounter,
+  .restartButton {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+  .container,
+  .container *,
+  .container *::before,
+  .container *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+.tile:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+.restartButton:focus-visible,
+.playAgainButton:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
